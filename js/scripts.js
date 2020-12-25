@@ -42,34 +42,36 @@ if (elForm) {
   var elContactsList = document.querySelector('.js-contacts')
 }
 
+// DOM eletemlarni uzgaruvchiga olindi
+
 elForm.addEventListener('submit', function (evt) {
-  console.log(contactsArray);
+  // formninig buttoni submitiga quloq solinyapti
   evt.preventDefault();
+  
   
   var NameInputValue = elNameInput.value;
   var RelationValue = elRelation.value;
   var PhoneNumberValue = elPhoneNumber.value;
+  // DOM elemetnlarni value sini olindi
   
   var newObject = {
     name: NameInputValue,
     rela: RelationValue,
     phone: PhoneNumberValue
   };
-
+  // Yangi obyekt yasaldi
   
-  
-  // contactsArray.forEach(function (contact) {
-    
-  // });
-
-  for(var contact = 0; contact < contactsArray.length; contact++){
+  for (var contact = 0; contact < contactsArray.length; contact++) {
     if (contactsArray[contact].phone === newObject.phone) {
       elPhoneNumber.classList.add('is-invalid');
       return;
     }
   }
+  // Tushunmadim
   
-  var ishere = contactsArray.includes(newObject); 
+  var ishere = contactsArray.includes(newObject);
+  // Tushunmadim
+  
   
   if (!ishere) {
     contactsArray.push(newObject);
@@ -79,12 +81,14 @@ elForm.addEventListener('submit', function (evt) {
   relationArray.push(RelationValue);
   elContactsList.innerHTML = '';
   
-  for(var relation of relationArray){
+  for (var relation of relationArray) {
     var newOption = createElement('option');
     newOption.textContent = relation;
     
     elDatalist.appendChild(newOption);
   }  
+  
+  
   
   contactsArray.forEach(function (contact) {
     
@@ -118,3 +122,6 @@ elForm.addEventListener('submit', function (evt) {
   console.log(contactsArray);
   
 })
+
+
+
